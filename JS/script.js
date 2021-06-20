@@ -97,40 +97,40 @@ async function runScript(i){
 					<strong> Information </strong>
 				</div>
         <div id="country_name" class="BoxText">
-          Country: ${country.country_name}
+          <b style="color:#C473FF">Country:</b> ${country.country_name}
         </div>
         <div id="continent" class="BoxText">
-          Continent: ${country.continent}
+          <b style="color:#C473FF">Continent:</b> ${country.continent}
         </div>
         <div id="no_of_states" class="BoxText">
-          No. of states: ${country.no_of_states}
+          <b style="color:#C473FF">No. of states/UT:</b> ${country.no_of_states}
         </div>
         <div id="country_population" class="BoxText">
-          Population: ${country.country_population}
+          <b style="color:#C473FF">Population:</b> ${country.country_population}
         </div>
         <div id="mother_tongue" class="BoxText">
-          Mother tongue: ${country.mother_tongue}
+          <b style="color:#C473FF">Mother tongue:</b> ${country.mother_tongue}
         </div>
         <div id="country_languages" class="BoxText">
-          Languages: ${country.country_languages}
+          <b style="color:#C473FF">Languages:</b> ${country.country_languages}
         </div>
         <div id="country_area" class="BoxText">
-          Area: ${country.country_area}
+          <b style="color:#C473FF">Area:</b> ${country.country_area}
         </div>
         <div id="country_longitude" class="BoxText">
-          Longitude: ${country.country_longitude}
+          <b style="color:#C473FF">Longitude:</b> ${country.country_longitude}
         </div>
         <div id="country_latitude" class="BoxText">
-          Latitude: ${country.country_latitude}
+          <b style="color:#C473FF">Latitude:</b> ${country.country_latitude}
         </div>
         <div id="country_rivers" class="BoxText">
-          Rivers: ${country.country_rivers}
+          <b style="color:#C473FF">Rivers:</b> ${country.country_rivers}
         </div>
         <div id="country_capital" class="BoxText">
-          Capital: ${country.country_capital}
+          <b style="color:#C473FF">Capital:</b> ${country.country_capital}
         </div>
         <div id="head_of_country" class="BoxText">
-          Country head: ${country.head_of_country}
+          <b style="color:#C473FF">Country head:</b> ${country.head_of_country}
         </div>
         `
         document.getElementById("disc-box").innerHTML = `
@@ -143,7 +143,7 @@ async function runScript(i){
           ${country.country_description}
 				</div>
         `
-        document.getElementById("video-box").innerHTML= `<iframe width="100%" height="100%" frameBorder="0" src="${country.country_video_url}?autoplay=1&mute=1">
+        document.getElementById("video-box").innerHTML= `<iframe width="100%" height="100%" frameBorder="0" src="${country.country_video_url}">
         </iframe>`;
 
 
