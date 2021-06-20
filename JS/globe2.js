@@ -3263,11 +3263,12 @@ let data = [
 
 // THREEJS CODE
 
+
 // CREATE scene where objects will be placed (kind of like a stage)
 const scene = new THREE.Scene();
 
 // CREATE camera to see objects (kind of like sitting in the audience)
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 // CREATE renderer to display the created objects (kind of like the people who place the diferent sets on the stage)
 const renderer = new THREE.WebGLRenderer({
@@ -3288,16 +3289,16 @@ const touch = new THREE.Vector2();
 
 // CREATE earth
 // Earthmap is used for the basic texture which has the various continents/countries/etc. on it
-let earthMap = new THREE.TextureLoader().load('./IMAGES/earth4k.jpg');
+let earthMap = new THREE.TextureLoader().load('../IMAGES/earth4k.jpg');
 
 // EarthBumpMap is used to give the texture some "depth" so it is more appealing on eyes and data visuals
-let earthBumpMap = new THREE.TextureLoader().load('./IMAGES/bump4k.jpg');
+let earthBumpMap = new THREE.TextureLoader().load('../IMAGES/bump4k.jpg');
 
 // EarthSpecMap gies the earth some shininess to the environment, allowing reflectivity off of the lights
-let earthSpecMap = new THREE.TextureLoader().load('./IMAGES/earthspec4k.jpg');
+let earthSpecMap = new THREE.TextureLoader().load('../IMAGES/earthspec4k.jpg');
 
 // Geometry is what the shape/size of the globe will be
-let earthGeometry = new THREE.SphereGeometry( 10, 32, 32);
+let earthGeometry = new THREE.SphereGeometry(10, 32, 32);
 
 // Material is how the globe will look like
 let earthMaterial = new THREE.MeshPhongMaterial({
@@ -3313,23 +3314,23 @@ let earthMaterial = new THREE.MeshPhongMaterial({
 let earth = new THREE.Mesh(earthGeometry, earthMaterial);
 
 // Add the earth to scene
-scene.add( earth );
+scene.add(earth);
 
 
 
-let boundariesTexture = new THREE.TextureLoader().load('./IMAGES/boundaries_16k2.png');
+let boundariesTexture = new THREE.TextureLoader().load('../IMAGES/boundaries_2.png');
 let boundariesGeo = new THREE.SphereGeometry(10, 32, 32);
 
 let boundariesMaterial = new THREE.MeshBasicMaterial({
     color: 0xff0000,
     map: boundariesTexture,
-    transparent:true,
+    transparent: true,
 });
 
 let boundaries = new THREE.Mesh(boundariesGeo, boundariesMaterial);
 
-boundaries.scale.set( 1, 1, 1);
-earth.add( boundaries )
+boundaries.scale.set(1, 1, 1);
+earth.add(boundaries)
 
 // Add country to the earth object
 let earthcountryGeo = new THREE.SphereGeometry(10, 32, 32);
@@ -3339,7 +3340,7 @@ let earthcountryGeo = new THREE.SphereGeometry(10, 32, 32);
 let earthMaterialcountry = new THREE.MeshPhongMaterial({
     roughness: 1,
     color: 0xffffff,
-    transparent:true,
+    transparent: true,
     opacity: 0,
 });
 
@@ -3347,24 +3348,24 @@ let earthMaterialcountry = new THREE.MeshPhongMaterial({
 let earthcountry = new THREE.Mesh(earthcountryGeo, earthMaterialcountry);
 
 // Scale above the earth sphere mesh
-earthcountry.scale.set( 1.002, 1.002, 1.002);
+earthcountry.scale.set(1.002, 1.002, 1.002);
 
 // Make child of the earth
-earth.add( earthcountry ) 
+earth.add(earthcountry)
 
 //-------------------------------------------------------------------------------
 // Add cloud to the earth object
 let earthcloudGeo = new THREE.SphereGeometry(10, 32, 32);
 
 // Add cloud texture
-let earthcloudTexture = new THREE.TextureLoader().load('./IMAGES/earthCloud.png');
+let earthcloudTexture = new THREE.TextureLoader().load('../IMAGES/earthCloud.png');
 
 // Add cloud material
 let earthMaterialcloud = new THREE.MeshLambertMaterial({
     roughness: 1,
     color: 0xffffff,
     map: earthcloudTexture,
-    transparent:true,
+    transparent: true,
     opacity: 0.7,
 });
 
@@ -3372,10 +3373,10 @@ let earthMaterialcloud = new THREE.MeshLambertMaterial({
 let earthcloud = new THREE.Mesh(earthcloudGeo, earthMaterialcloud);
 
 // Scale above the earth sphere mesh
-earthcloud.scale.set( 1.007, 1.007, 1.007);
+earthcloud.scale.set(1.007, 1.007, 1.007);
 
 // Make child of the earth
-earth.add( earthcloud )
+earth.add(earthcloud)
 
 //------------------------------------------------------------------------------------
 
@@ -3397,7 +3398,7 @@ function createSkyBox(scene) {
 };
 
 // CreateLights is a function which creates the lights and adds them to the scene.
-function createLights(scene){
+function createLights(scene) {
     lights[0] = new THREE.PointLight("#ffffff", .5, 0);
     lights[1] = new THREE.PointLight("#ffffff", .5, 0);
     lights[2] = new THREE.PointLight("#ffffff", .8);
@@ -3405,7 +3406,7 @@ function createLights(scene){
 
     lights[0].position.set(50, 30, 50);
     lights[1].position.set(50, -30, 50);
-    lights[2].position.set(-50,30,-50);
+    lights[2].position.set(-50, 30, -50);
 
     scene.add(lights[0]);
     scene.add(lights[1]);
@@ -3436,14 +3437,14 @@ controls.saveState();
 
 // Add event listeners so DOM knows what functions to use when objects/items are interacted with
 window.addEventListener('resize', onWindowResize, false);
-window.addEventListener('click', onWindowClick, false);
+document.getElementsByTagName("canvas")[0].addEventListener('click', onWindowClick, false);
 //window.addEventListener('touchstart', onTouch, false);
 
 // Used for showing/hiding the instruction box
 let hidden = false;
-function hideInstructions(){
+function hideInstructions() {
     hidden = !hidden;
-    if(hidden){
+    if (hidden) {
         document.querySelector("#instruction-box").style.display = "none";
     } else {
         document.querySelector("#instruction-box").style.display = "flex";
@@ -3462,26 +3463,29 @@ function onWindowResize() {
 // setting local storage-------------------------------------------------------------------
 
 function changeValue(c_pk, value) {
-  var x = window.open("", "myWindow", "width=200,height=100");
-  x.localStorage.setItem(c_pk, value);
-  x.close();
+    var x = window.open("", "myWindow", "width=200,height=100");
+    x.localStorage.setItem(c_pk, value);
+    x.close();
 }
 
 //------------------------------------------------------------
 // Listens for the mouse to intersect object and when clicked returns the data to the inner html
 function onWindowClick(event) {
+    // console.log(window.getComputedStyle(document.getElementById("infoWrapper")).display);
+
+    // console.log(window.getComputedStyle(document.getElementById("infoWrapper")).display);
     event.preventDefault();
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
     mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
     raycaster.setFromCamera(mouse, camera);
 
     let intersects = raycaster.intersectObjects(earthcountry.children);
-    
 
-    for (let i = 0; i < intersects.length; i++){
+
+    for (let i = 0; i < intersects.length; i++) {
         document.getElementById("infoWrapper").style.display = "flex";
         document.getElementById("attemptQuizButton").style.display = "block";
-        
+
         // localStorage.setItem("c_pk", intersects[0].object.userData.pk);
         // localData.set( "c_pk", intersects[0].object.userData.pk )
         changeValue("c_pk", intersects[0].object.userData.pk);
@@ -3493,6 +3497,7 @@ function onWindowClick(event) {
     const item = intersects[0];
     let point = item.point;
     let camDistance = camera.position.copy(point).normalize.multiplyScalar(camDistance);
+
 };
 
 // Allows for the scene to move and be interacted with
@@ -3500,26 +3505,26 @@ function onWindowClick(event) {
 let rotationDecider = 1;
 
 function animate() {
-    requestAnimationFrame( animate );
-    if(rotationDecider==1){
+    requestAnimationFrame(animate);
+    if (rotationDecider == 1) {
         earth.rotation.y -= 0.0005;
     }
     earthcloud.rotation.y -= 0.0002;
-    
-    
+
+
     render();
-	controls.update();
+    controls.update();
 };
 
 // Updates camera renderer
 function render() {
-    renderer.render( scene, camera );
+    renderer.render(scene, camera);
 };
 
 // Removes the points of interest freeing up memory and space to have better performance
-function removeChildren(){
+function removeChildren() {
     let destroy = earthcountry.children.length;
-    while(destroy--) {
+    while (destroy--) {
         earthcountry.remove(earthcountry.children[destroy].material.dispose())
         earthcountry.remove(earthcountry.children[destroy].geometry.dispose())
         earthcountry.remove(earthcountry.children[destroy])
@@ -3527,17 +3532,17 @@ function removeChildren(){
 };
 
 // Create and add coordinates for the globe
-function addCountryCoord(earth, country_name, country_latitude, country_longitude, continent, pk, color){
+function addCountryCoord(earth, country_name, country_latitude, country_longitude, continent, pk, color) {
     let pointOfInterest = new THREE.SphereGeometry(.1, 32, 32);
-    let lat = country_latitude * (Math.PI/180);
-    let lon = -country_longitude * (Math.PI/180);
+    let lat = country_latitude * (Math.PI / 180);
+    let lon = -country_longitude * (Math.PI / 180);
     const radius = 9.9;
-    const phi = (90-lat)*(Math.PI/180);
-    const theta = (lon+180)*(Math.PI/180);
+    const phi = (90 - lat) * (Math.PI / 180);
+    const theta = (lon + 180) * (Math.PI / 180);
 
     let material = new THREE.MeshPhongMaterial({
-        color:color,
-        emissive:color
+        color: color,
+        emissive: color
     });
 
     let mesh = new THREE.Mesh(
@@ -3551,13 +3556,13 @@ function addCountryCoord(earth, country_name, country_latitude, country_longitud
         Math.cos(lat) * Math.sin(lon) * radius
     );
 
-    mesh.rotation.set(0.0, -lon, lat-Math.PI*0.5);
+    mesh.rotation.set(0.0, -lon, lat - Math.PI * 0.5);
 
     mesh.userData.country_name = country_name;
     mesh.userData.color = color;
     mesh.userData.continent = continent;
     mesh.userData.pk = pk;
-    rotationDecider=0
+    rotationDecider = 0
     earthcountry.add(mesh)
 
 };
@@ -3575,29 +3580,29 @@ function changeToCountry() {
     removeChildren();
 
     // Get the data from the JSON file
-    for (let i = 0; i < data.length; i++){
-        if(data[i].continent == 'ASIA (EX. NEAR EAST)'){
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].continent == 'ASIA (EX. NEAR EAST)') {
             addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'yellow');
-        } else if(data[i].continent == 'NEAR EAST'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'orange');
-        } else if(data[i].continent == 'NORTHERN AMERICA'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'lightblue');
-        } else if(data[i].continent == 'WESTERN EUROPE'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'cyan');
-        } else if(data[i].continent == 'EASTERN EUROPE'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'red');
-        } else if(data[i].continent == 'BALTICS'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'purple');
-        } else if(data[i].continent == 'C.W. OF IND. STATES'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'orange');
-        } else if(data[i].continent == 'NORTHERN AFRICA'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'beige');
-        } else if(data[i].continent == 'SUB-SAHARN AFRICA'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'brown');
-        } else if(data[i].continent == 'LATIN AMER. & CARIB'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'gold');
-        } else if(data[i].continent == 'OCEANIA'){
-            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk,'lightgreen');
+        } else if (data[i].continent == 'NEAR EAST') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'orange');
+        } else if (data[i].continent == 'NORTHERN AMERICA') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'lightblue');
+        } else if (data[i].continent == 'WESTERN EUROPE') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'cyan');
+        } else if (data[i].continent == 'EASTERN EUROPE') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'red');
+        } else if (data[i].continent == 'BALTICS') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'purple');
+        } else if (data[i].continent == 'C.W. OF IND. STATES') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'orange');
+        } else if (data[i].continent == 'NORTHERN AFRICA') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'beige');
+        } else if (data[i].continent == 'SUB-SAHARN AFRICA') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'brown');
+        } else if (data[i].continent == 'LATIN AMER. & CARIB') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'gold');
+        } else if (data[i].continent == 'OCEANIA') {
+            addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'lightgreen');
         }
     }
 };
@@ -3623,17 +3628,17 @@ animate();
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementsByTagName("header")[0].style.display = "none";
-  }
+}
 
-  document.getElementById("openbutton").addEventListener ("click", openNav, false);
-  
-  function closeNav() {
+document.getElementById("openbutton").addEventListener("click", openNav, false);
+
+function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementsByTagName("header")[0].style.display = "flex"
-  }
+}
 
-  document.getElementById("closebutton").addEventListener ("click", closeNav, false);
-  document.getElementById("mySidenav").addEventListener ("click", closeNav, false);
+document.getElementById("closebutton").addEventListener("click", closeNav, false);
+document.getElementById("mySidenav").addEventListener("click", closeNav, false);
 
 
 
@@ -3641,4 +3646,3 @@ function openNav() {
   //----------------------------------------------------------------------------------------------------------
 
 
-  
