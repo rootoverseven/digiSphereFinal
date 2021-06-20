@@ -3357,7 +3357,7 @@ earth.add( earthcountry )
 let earthcloudGeo = new THREE.SphereGeometry(10, 32, 32);
 
 // Add cloud texture
-let earthcloudTexture = new THREE.TextureLoader().load('../IMAGES/earthCloud.png');
+let earthcloudTexture = new THREE.TextureLoader().load('./IMAGES/earthCloud.png');
 
 // Add cloud material
 let earthMaterialcloud = new THREE.MeshLambertMaterial({
