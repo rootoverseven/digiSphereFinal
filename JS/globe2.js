@@ -47,13 +47,13 @@ const touch = new THREE.Vector2();
 
 // CREATE earth
 // Earthmap is used for the basic texture which has the various continents/countries/etc. on it
-let earthMap = new THREE.TextureLoader().load('../IMAGES/earth4k.jpg');
+let earthMap = new THREE.TextureLoader().load('./IMAGES/earth4k.jpg');
 
 // EarthBumpMap is used to give the texture some "depth" so it is more appealing on eyes and data visuals
-let earthBumpMap = new THREE.TextureLoader().load('../IMAGES/bump4k.jpg');
+let earthBumpMap = new THREE.TextureLoader().load('./IMAGES/bump4k.jpg');
 
 // EarthSpecMap gies the earth some shininess to the environment, allowing reflectivity off of the lights
-let earthSpecMap = new THREE.TextureLoader().load('../IMAGES/earthspec4k.jpg');
+let earthSpecMap = new THREE.TextureLoader().load('./IMAGES/earthspec4k.jpg');
 
 // Geometry is what the shape/size of the globe will be
 let earthGeometry = new THREE.SphereGeometry( 10, 32, 32);
@@ -76,7 +76,7 @@ scene.add( earth );
 
 
 
-let boundariesTexture = new THREE.TextureLoader().load('../IMAGES/boundaries_16k2.png');
+let boundariesTexture = new THREE.TextureLoader().load('./IMAGES/boundaries_16k2.png');
 let boundariesGeo = new THREE.SphereGeometry(10, 32, 32);
 
 let boundariesMaterial = new THREE.MeshBasicMaterial({
