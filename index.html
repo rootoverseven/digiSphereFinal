@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>GLOBE VISUAL</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@200&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./CSS/style.css" media="screen" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<span style="font-size:30px;cursor:pointer" id="openbutton">&#9776;</span>
+
+	</header>
+	<div id="mySidenav" class="sidenav">
+		<a href="javascript:void(0)" class="closebtn" id="closebutton">&times;</a>
+		<a href="#" id="country">Countries</a>
+		<a href="#" id="instructions">Instructions</a>
+	</div>
+
+	<div id="title-box">
+
+		<div id="title">
+			Our Beautiful Earth
+		</div>
+
+		<div id="subtitle">
+			By Piyush Kumar
+		</div>
+
+	</div>
+
+	<div id="instruction-box">
+
+		<div id="instruction-title">
+			INSTRUCTIONS
+		</div>
+
+		<div id="instruction-body">
+
+			<h1>
+				Click and drag your mouse around to see the full globe
+				<br>
+				Click on the points of interest to display their information
+				<br>
+				Zoom in and out using your mouse scroll wheel
+				<br>
+				Have fun exploring the world!
+			</h1>
+
+		</div>
+
+	</div>
+
+	<div id="display-box">
+
+		<div id="display-box-title">
+			Choose an option below!
+		</div>
+
+		<button id="country">
+			Click here for countries!
+		</button>
+
+		<button id="instructions">
+			Click here for instructions!
+		</button>
+
+	</div>
+
+	<div class="infoWrapper" id="infoWrapper">
+		<div class="container">
+			<div class="infoBox BoxContainer">
+				<div id="info-box" class="BoxWrapper">
+
+					<div id="info-title" class="boxTitle">
+						<strong> Information </strong>
+					</div>
+
+					<div id="continent" class="BoxText">
+						Region: Asia
+					</div>
+
+					<div id="country_name" class="BoxText">
+						Country: India
+					</div>
+
+					<div id="language" class="BoxText">
+						Language: Hindi, English, Bangla
+					</div>
+
+					<div id="population" class="BoxText">
+						Population: 18998776
+					</div>
+
+					<div id="area-sq-mi" class="BoxText">
+						Area(mile^2): 567890
+					</div>
+
+					<div id="gdp-per-capita" class="BoxText">
+						GDP Per-Capita: 8.9
+					</div>
+
+					<div id="climate" class="BoxText">
+						Climate: Summer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, Rainy
+					</div>
+
+				</div>
+			</div>
+
+			<div class="discBox BoxContainer">
+				<div id="disc-box" class="BoxWrapper">
+					<div id="disc-title" class="boxTitle">
+						<strong> Information </strong>
+					</div>
+					<div id="disc-text" class="BoxText">
+						<img src="https://en.wikipedia.org/wiki/Flag_of_India#/media/File:Flag_of_India.svg" alt="">
+						Climate: Summer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, Rainy
+					</div>
+				</div>
+			</div>
+
+			<div class="miniMap BoxContainer">
+				<div id="miniMap-box" class="BoxWrapper">
+					<div id="miniMap-text" class="BoxText">
+						<ul id="image_list">
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="mainMap BoxContainer">
+				<div id="mainMap-box" class="BoxWrapper">
+					<div id="mainMap-title" class="boxTitle">
+						<strong id="caption"> Information </strong>
+					</div>
+					<div id="mainMap-text" class="BoxImgMain">
+					</div>
+				</div>
+			</div>
+
+			<div class="stateList BoxContainer">
+				<div id="stateList-box" class="BoxWrapper">
+					<div id="stateList-title" class="boxTitle">
+						<strong> States </strong>
+					</div>
+					<div id="stateText" class="BoxText">
+						Climate: Summer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, Rainy
+					</div>
+				</div>
+			</div>
+
+			<div class="videoBox BoxContainer">
+				<div id="video-box" class="BoxWrapper">
+					<div id="videoBox-title" class="boxTitle">
+						<strong> Information </strong>
+					</div>
+					<div id="videoBox-text" class="BoxText">
+						Climate: Summer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, RainySummer, Winter, Rainy
+					</div>
+				</div>
+			</div>
+
+			<div class="crossButton BoxContainer">
+				<div class="BoxWrapper">
+					<div class="boxTitle">
+						<strong onclick="closeInfo()"> &times; </strong>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="attemptQuizButton" class="attemptQuizButton" onclick="quizStart()">Attempt <br> quiz</div>
+
+
+	<div id="quiz" class="quiz">
+		<strong  class="quizClose" onclick="closeInfo()"> &times; </strong>
+		<div id="quizTitle"> <h2>India Quiz</h2></div>
+		<div id="quizQuestions" class="quizQuestions">
+			<strong id="q1" answer="Option B">Please select your gender:</strong>
+			<br>
+			<br>
+			<br>
+			<div id="q1a" answer="Option B" onclick="setAnswer('q1', 'q1a', 'span1')" class="stateButton quizbtn">Option A</div>
+			<br>
+			<div id="q1b" answer="Option B" onclick="setAnswer('q1', 'q1b', 'span1')" class="stateButton quizbtn">Option B</div>
+			<br>
+			<div id="q1c" answer="Option B" onclick="setAnswer('q1', 'q1c', 'span1')" class="stateButton quizbtn">Option C</div>
+			<br>
+			<div id="q1d" answer="Option B" onclick="setAnswer('q1', 'q1d', 'span1')" class="stateButton quizbtn">Option D</div>
+			<br>
+
+			<span id="span1">Answer</span>
+		
+			<br> 
+			<br> 
+			
+			<strong id="q2" answer="Option C" >Please select your gender:</strong>
+			<br>
+			<br>
+			<br>
+			<div id="q2a" answer="Option C" onclick="setAnswer('q2', 'q2a', 'span2')" class="stateButton quizbtn">Option A</div>
+			<br>
+			<div id="q2b" answer="Option C" onclick="setAnswer('q2', 'q2b', 'span2')" class="stateButton quizbtn">Option B</div>
+			<br>
+			<div id="q2c" answer="Option C" onclick="setAnswer('q2', 'q2c', 'span2')" class="stateButton quizbtn">Option C</div>
+			<br>
+			<div id="q2d" answer="Option C" onclick="setAnswer('q2', 'q2d', 'span2')" class="stateButton quizbtn">Option D</div>
+			<br>
+			<span id="span2">Answer</span>
+			<br>
+			<br>
+		</div>
+		
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="module" src="./JS/globe2.js"></script>
+	<script src="./JS/script.js"></script>
+
+</body>
+
+</html>
