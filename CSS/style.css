@@ -250,7 +250,9 @@ border: 10px solid rgba(255, 255, 255, 0);
   
   .crossButton { 
       grid-area: 1 / 9 / 2 / 10; 
-      overflow: hidden;
+      overflow: visible;
+      margin: 0;
+      padding: 0;
     }
     .crossButton strong{
         background: rgba(255, 0, 0, 0.281);
