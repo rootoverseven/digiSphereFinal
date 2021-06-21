@@ -224,7 +224,7 @@ function countryApiCall(e){
 let singleState= null;
 
 async function stateApiCall(a){
-  document.getElementById("info-box").innerHTML = `Getting Data`;
+  // document.getElementById("info-box").innerHTML = `Getting Data`;
   document.getElementById("disc-box").innerHTML = `Getting Data`;
   document.getElementById("video-box").innerHTML= `Getting Data`;
   document.getElementById("image_list").innerHTML = "Getting Data";
