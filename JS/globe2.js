@@ -3387,12 +3387,12 @@ let lights = [];
 function createSkyBox(scene) {
     const loader = new THREE.CubeTextureLoader();
     const texture = loader.load([
-        '../IMAGES/space_right.png',
-        '../IMAGES/space_left.png',
-        '../IMAGES/space_top.png',
-        '../IMAGES/space_bot.png',
-        '../IMAGES/space_front.png',
-        '../IMAGES/space_back.png'
+        './IMAGES/space_left.png',
+        './IMAGES/space_top.png',
+        './IMAGES/space_bot.png',
+        './IMAGES/space_right.png',
+        './IMAGES/space_front.png',
+        './IMAGES/space_back.png'
     ])
     scene.background = texture;
 };
