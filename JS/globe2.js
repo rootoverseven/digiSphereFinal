@@ -3289,13 +3289,13 @@ const touch = new THREE.Vector2();
 
 // CREATE earth
 // Earthmap is used for the basic texture which has the various continents/countries/etc. on it
-let earthMap = new THREE.TextureLoader().load('./IMAGES/earth4k.jpg');
+let earthMap = new THREE.TextureLoader().load('../IMAGES/earth4k.jpg');
 
 // EarthBumpMap is used to give the texture some "depth" so it is more appealing on eyes and data visuals
-let earthBumpMap = new THREE.TextureLoader().load('./IMAGES/bump4k.jpg');
+let earthBumpMap = new THREE.TextureLoader().load('../IMAGES/bump4k.jpg');
 
 // EarthSpecMap gies the earth some shininess to the environment, allowing reflectivity off of the lights
-let earthSpecMap = new THREE.TextureLoader().load('./IMAGES/earthspec4k.jpg');
+let earthSpecMap = new THREE.TextureLoader().load('../IMAGES/earthspec4k.jpg');
 
 // Geometry is what the shape/size of the globe will be
 let earthGeometry = new THREE.SphereGeometry(10, 32, 32);
@@ -3318,7 +3318,7 @@ scene.add(earth);
 
 
 
-let boundariesTexture = new THREE.TextureLoader().load('./IMAGES/boundaries_2.png');
+let boundariesTexture = new THREE.TextureLoader().load('../IMAGES/boundaries_2.png');
 let boundariesGeo = new THREE.SphereGeometry(10, 32, 32);
 
 let boundariesMaterial = new THREE.MeshBasicMaterial({
@@ -3358,7 +3358,7 @@ earth.add(earthcountry)
 let earthcloudGeo = new THREE.SphereGeometry(10, 32, 32);
 
 // Add cloud texture
-let earthcloudTexture = new THREE.TextureLoader().load('./IMAGES/earthCloud.png');
+let earthcloudTexture = new THREE.TextureLoader().load('../IMAGES/earthCloud.png');
 
 // Add cloud material
 let earthMaterialcloud = new THREE.MeshLambertMaterial({
@@ -3490,9 +3490,9 @@ function onWindowClick(event) {
         // localData.set( "c_pk", intersects[0].object.userData.pk )
         changeValue("c_pk", intersects[0].object.userData.pk);
 
-        document.querySelector("#continent").innerText = "continent: " + intersects[0].object.userData.continent;
+        document.querySelector("#continent").innerText = "Continent: " + intersects[0].object.userData.continent;
         document.getElementById("continent").style.color = intersects[0].object.userData.color;
-        document.querySelector("#country_name").innerText = "Country: " + intersects[0].object.userData.country_name;
+        document.querySelector("#country_name").innerHTML = `<b style="color:#C473FF">Country:</b>` + intersects[0].object.userData.country_name;
     }
     const item = intersects[0];
     let point = item.point;
@@ -3641,8 +3641,5 @@ document.getElementById("closebutton").addEventListener("click", closeNav, false
 document.getElementById("mySidenav").addEventListener("click", closeNav, false);
 
 
-
-
-  //----------------------------------------------------------------------------------------------------------
 
 
