@@ -3581,7 +3581,7 @@ function changeToCountry() {
 
     // Get the data from the JSON file
     for (let i = 0; i < data.length; i++) {
-        if (data[i].continent == 'ASIA (EX. NEAR EAST)') {
+        if (data[i].continent == 'ASIA') {
             addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'yellow');
         } else if (data[i].continent == 'NEAR EAST') {
             addCountryCoord(earth, data[i].country_name, data[i].country_latitude, data[i].country_longitude, data[i].continent, data[i].pk, 'orange');
