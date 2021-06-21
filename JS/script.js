@@ -17,17 +17,30 @@ function closeInfo(){
   document.getElementById("infoWrapper").style.display = "none";
   document.getElementById("quiz").style.display = "none";
   document.getElementById("attemptQuizButton").style.display = "none";
-  document.getElementById("video-box").innerHTML="";
+  pauseVideo();
 }
 
 function quizStart(){
   document.getElementById("infoWrapper").style.display = "none";
   document.getElementById("attemptQuizButton").style.display = "none";
   document.getElementById("quiz").style.display = "block";
-  document.getElementById("video-box").innerHTML="";
+  
   document.getElementById("quizQuestions").innerHTML = "Getting Data";
 
   getQuizApi(parseInt(localStorage.getItem("c_pk")));
+
+  pauseVideo();
+}
+
+function quizClose(){
+  document.getElementById("infoWrapper").style.display = "flex";
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("attemptQuizButton").style.display = "flex";
+  // document.getElementById("video-box").innerHTML="";
+}
+
+function pauseVideo(){
+  $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
 }
 
 let countryQuiz= null;
@@ -92,18 +105,9 @@ async function runScript(i){
         // document.getElementById("country_capital").innerHTML= `Country: ${country.country_capital}`
         // document.getElementById("head_of_country").innerHTML= `Country: ${country.head_of_country}`
         // document.getElementById("country_video_url").innerHTML= `Country: ${country.country_video_url}`
-        document.getElementById("info-box").innerHTML = `
-        <div id="info-title" class="boxTitle">
-					<strong> Information </strong>
-				</div>
-        <div id="country_name" class="BoxText">
-          <b style="color:#C473FF">Country:</b> ${country.country_name}
-        </div>
-        <div id="continent" class="BoxText">
-          <b style="color:#C473FF">Continent:</b> ${country.continent}
-        </div>
+        document.getElementById("info-box").innerHTML += `
         <div id="no_of_states" class="BoxText">
-          <b style="color:#C473FF">No. of states/UT:</b> ${country.no_of_states}
+          <b style="color:#C473FF">No. of states & UT:</b> ${country.no_of_states}
         </div>
         <div id="country_population" class="BoxText">
           <b style="color:#C473FF">Population:</b> ${country.country_population}
@@ -143,7 +147,7 @@ async function runScript(i){
           ${country.country_description}
 				</div>
         `
-        document.getElementById("video-box").innerHTML= `<iframe width="100%" height="100%" frameBorder="0" src="${country.country_video_url}">
+        document.getElementById("video-box").innerHTML= `<iframe class="youtube-video" width="100%" height="100%" frameBorder="0" src="${country.country_video_url}?enablejsapi=1&version=3&playerapiid=ytplayer">
         </iframe>`;
 
 
@@ -161,8 +165,13 @@ async function getAllStates(i){
       console.log(allStates);
       document.getElementById("stateText").innerHTML = "";
       for(let s=0; s<allStates.length; s++){
-        
-        document.getElementById("stateText").innerHTML += `<div onclick="stateApiCall(${allStates[s].pk})" class="stateButton">${allStates[s].state_name}</div>`
+        if(allStates[s].is_union_teritory===false){
+          document.getElementById("stateText").innerHTML += `<div onclick="stateApiCall(${allStates[s].pk})" class="stateButton">${allStates[s].state_name}</div>`
+
+        }
+        else{
+          document.getElementById("stateText").innerHTML += `<div onclick="stateApiCall(${allStates[s].pk})" class="stateButton" style="color: #F4FF73;">${allStates[s].state_name} (UT)</div>`
+        }
 
       }
     })
@@ -196,7 +205,7 @@ async function getAllMaps(i){
 
 
 function countryApiCall(e){
-  document.getElementById("info-box").innerHTML = `Getting Data`;
+  // document.getElementById("info-box").innerHTML = `Getting Data`;
   document.getElementById("disc-box").innerHTML = `Getting Data`;
   document.getElementById("video-box").innerHTML= `Getting Data`;
   document.getElementById("stateText").innerHTML = "Getting Data";
@@ -243,37 +252,37 @@ async function stateApiCall(a){
           <strong> Information </strong>
         </div>
         <div id="country_name" class="BoxText">
-          State: ${singleState.state_name}
+          <b style="color:#C473FF">State: </b> ${singleState.state_name}
         </div>
         <div id="country_name" class="BoxText">
-          Country: ${singleState.country_name}
+          <b style="color:#C473FF">Country: </b> ${singleState.country_name}
         </div>
         <div id="no_of_cities" class="BoxText">
-          No. of cities: ${singleState.no_of_cities}
+          <b style="color:#C473FF">No. of cities: </b> ${singleState.no_of_cities}
         </div>
         <div id="state_population" class="BoxText">
-          Population: ${singleState.state_population}
+          <b style="color:#C473FF">Population: </b> ${singleState.state_population}
         </div>
         <div id="country_languages" class="BoxText">
-          Languages: ${singleState.state_languages}
+          <b style="color:#C473FF">Languages: </b> ${singleState.state_languages}
         </div>
         <div id="state_area" class="BoxText">
-          Area: ${singleState.state_area}
+          <b style="color:#C473FF">Area: </b> ${singleState.state_area}
         </div>
         <div id="state_longitude" class="BoxText">
-          Longitude: ${singleState.state_longitude}
+          <b style="color:#C473FF">Longitude: </b> ${singleState.state_longitude}
         </div>
         <div id="state_latitude" class="BoxText">
-          Latitude: ${singleState.state_latitude}
+          <b style="color:#C473FF">Latitude: </b> ${singleState.state_latitude}
         </div>
         <div id="state_rivers" class="BoxText">
-          Rivers: ${singleState.state_rivers}
+          <b style="color:#C473FF">Rivers: </b> ${singleState.state_rivers}
         </div>
         <div id="state_capital" class="BoxText">
-          Capital: ${singleState.state_capital}
+          <b style="color:#C473FF">Capital: </b> ${singleState.state_capital}
         </div>
         <div id="head_of_state" class="BoxText">
-          State head: ${singleState.head_of_state}
+          <b style="color:#C473FF">State head: </b> ${singleState.head_of_state}
         </div>
         `
         document.getElementById("disc-box").innerHTML = `
@@ -284,7 +293,7 @@ async function stateApiCall(a){
           ${singleState.state_description}
         </div>
         `
-        document.getElementById("video-box").innerHTML= `<iframe width="100%" height="100%" frameBorder="0" src="${singleState.state_video_url}?autoplay=1&mute=1">
+        document.getElementById("video-box").innerHTML= `<iframe class="youtube-video" width="100%" height="100%" frameBorder="0" src="${singleState.state_video_url}?enablejsapi=1&version=3&playerapiid=ytplayer">
         </iframe>`;
 
         document.getElementById("caption").innerHTML = `${singleState.state_name} Map`;
