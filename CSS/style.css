@@ -34,6 +34,12 @@ header span{
     margin: auto;
 }
 
+.logoimg{
+    position: absolute;
+    top: 0%;
+    right: 0;
+}
+
 .sidenav {
     height: 100%;
     width: 0;
@@ -44,7 +50,9 @@ header span{
     background-color: #111;
     overflow-x: hidden;
     transition: 0.5s;
-    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     background: rgba(0, 90, 255, 0.25);
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 4px );
@@ -53,7 +61,14 @@ border-top-right-radius: 30px;
 border-bottom-right-radius: 30px;
 border: 1px solid rgba( 255, 255, 255, 0.18 );
   }
-  
+
+  .sidenav div{
+      margin-top: 60px;
+      margin-bottom: 30px;
+  }
+  .sidenav img{
+      width: 100%;
+  }
   .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -229,6 +244,9 @@ border: 10px solid rgba(255, 255, 255, 0);
       background-color: rgba(165, 42, 42, 0.26);
       padding: 0 !important;
     }
+    .videoBox .BoxWrapper{
+        height: 100%;
+    }
   
   .crossButton { 
       grid-area: 1 / 9 / 2 / 10; 
@@ -255,14 +273,14 @@ border: 10px solid rgba(255, 255, 255, 0);
         width: 100%;
     }
     .BoxWrapper .boxTitle{
-        font-size: 1.5vw;
+        font-size: 1.5rem;
         display: flex;
         justify-content: center;
         margin: 2%;
     }
 
     .BoxText{
-        font-size: 1.2vw;
+        font-size: 1.2rem;
         margin: 2%;
     }
 
