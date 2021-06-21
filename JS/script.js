@@ -150,7 +150,7 @@ async function runScript(i){
           ${country.country_description}
 				</div>
         `
-        document.getElementById("video-box").innerHTML= `<iframe class="youtube-video" width="100%" height="100%" frameBorder="0" src="${country.country_video_url}?enablejsapi=1&version=3&playerapiid=ytplayer">
+        document.getElementById("video-box").innerHTML= `<iframe class="youtube-video" width="100%" height="100%" frameBorder="0" src="${country.country_video_url}?enablejsapi=1&version=3&playerapiid=ytplayer" allowfullscreen>
         </iframe>`;
 
 
@@ -296,7 +296,7 @@ async function stateApiCall(a){
           ${singleState.state_description}
         </div>
         `
-        document.getElementById("video-box").innerHTML= `<iframe class="youtube-video" width="100%" height="100%" frameBorder="0" src="${singleState.state_video_url}?enablejsapi=1&version=3&playerapiid=ytplayer">
+        document.getElementById("video-box").innerHTML= `<iframe class="youtube-video" width="100%" height="100%" frameBorder="0" src="${singleState.state_video_url}?enablejsapi=1&version=3&playerapiid=ytplayer" allowfullscreen>
         </iframe>`;
 
         document.getElementById("caption").innerHTML = `${singleState.state_name} Map`;

@@ -14,6 +14,7 @@ async function getTopics(i){
         <h2>${topics[0].topic_name}</h2>
         <img src="${topics[0].topic_image_url}" alt="">
         <p>${topics[0].topic_description}</p>
+        <iframe src="${topics[0].topic_video_url}" frameborder="0"></iframe>
       `
       
     })
