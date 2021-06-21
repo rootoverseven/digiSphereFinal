@@ -3485,11 +3485,12 @@ function onWindowClick(event) {
     for (let i = 0; i < intersects.length; i++) {
         document.getElementById("infoWrapper").style.display = "flex";
         document.getElementById("attemptQuizButton").style.display = "block";
+        document.getElementById("topics").style.display = "block";
 
         // localStorage.setItem("c_pk", intersects[0].object.userData.pk);
         // localData.set( "c_pk", intersects[0].object.userData.pk )
         changeValue("c_pk", intersects[0].object.userData.pk);
-      
+
         document.getElementById("info-box").innerHTML= `
         <div id="info-title" class="boxTitle">
             <strong> Getting Data </strong>
@@ -3654,4 +3655,6 @@ document.getElementById("mySidenav").addEventListener("click", closeNav, false);
 
 
 
+
+  //----------------------------------------------------------------------------------------------------------
 
