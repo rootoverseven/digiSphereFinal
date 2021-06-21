@@ -3493,7 +3493,7 @@ function onWindowClick(event) {
 
         document.getElementById("info-box").innerHTML= `
         <div id="info-title" class="boxTitle">
-            <strong> Getting Data </strong>
+            <strong> Information </strong>
         </div>
         <div id="country_name" class="BoxText">
             <b style="color:#C473FF">Country:</b> Getting Data
