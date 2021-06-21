@@ -3489,6 +3489,18 @@ function onWindowClick(event) {
         // localStorage.setItem("c_pk", intersects[0].object.userData.pk);
         // localData.set( "c_pk", intersects[0].object.userData.pk )
         changeValue("c_pk", intersects[0].object.userData.pk);
+      
+        document.getElementById("info-box").innerHTML= `
+        <div id="info-title" class="boxTitle">
+            <strong> Getting Data </strong>
+        </div>
+        <div id="country_name" class="BoxText">
+            <b style="color:#C473FF">Country:</b> Getting Data
+        </div>
+        <div id="continent" class="BoxText">
+            Continent: Getting Data
+        </div>
+        `
 
         document.querySelector("#continent").innerText = "Continent: " + intersects[0].object.userData.continent;
         document.getElementById("continent").style.color = intersects[0].object.userData.color;
