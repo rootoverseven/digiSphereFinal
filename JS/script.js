@@ -17,12 +17,14 @@ function closeInfo(){
   document.getElementById("infoWrapper").style.display = "none";
   document.getElementById("quiz").style.display = "none";
   document.getElementById("attemptQuizButton").style.display = "none";
+  document.getElementById("topics").style.display = "none";
   pauseVideo();
 }
 
 function quizStart(){
   document.getElementById("infoWrapper").style.display = "none";
   document.getElementById("attemptQuizButton").style.display = "none";
+  document.getElementById("topics").style.display = "none";
   document.getElementById("quiz").style.display = "block";
   
   document.getElementById("quizQuestions").innerHTML = "Getting Data";
@@ -36,6 +38,7 @@ function quizClose(){
   document.getElementById("infoWrapper").style.display = "flex";
   document.getElementById("quiz").style.display = "none";
   document.getElementById("attemptQuizButton").style.display = "flex";
+  document.getElementById("topics").style.display = "flex";
   // document.getElementById("video-box").innerHTML="";
 }
 
