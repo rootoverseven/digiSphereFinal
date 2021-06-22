@@ -3485,6 +3485,7 @@ function onWindowClick(event) {
     for (let i = 0; i < intersects.length; i++) {
         document.getElementById("infoWrapper").style.display = "flex";
         document.getElementById("attemptQuizButton").style.display = "block";
+        document.getElementById("gameButton").style.display = "block";
         document.getElementById("topics").style.display = "block";
 
         // localStorage.setItem("c_pk", intersects[0].object.userData.pk);

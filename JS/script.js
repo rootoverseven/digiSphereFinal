@@ -17,6 +17,7 @@ function closeInfo(){
   document.getElementById("infoWrapper").style.display = "none";
   document.getElementById("quiz").style.display = "none";
   document.getElementById("attemptQuizButton").style.display = "none";
+  document.getElementById("gameButton").style.display = "none";
   document.getElementById("topics").style.display = "none";
   pauseVideo();
 }
@@ -24,6 +25,7 @@ function closeInfo(){
 function quizStart(){
   document.getElementById("infoWrapper").style.display = "none";
   document.getElementById("attemptQuizButton").style.display = "none";
+  document.getElementById("gameButton").style.display = "none";
   document.getElementById("topics").style.display = "none";
   document.getElementById("quiz").style.display = "block";
   
@@ -38,6 +40,27 @@ function quizClose(){
   document.getElementById("infoWrapper").style.display = "flex";
   document.getElementById("quiz").style.display = "none";
   document.getElementById("attemptQuizButton").style.display = "flex";
+  document.getElementById("gameButton").style.display = "flex";
+  document.getElementById("topics").style.display = "flex";
+  // document.getElementById("video-box").innerHTML="";
+}
+
+
+function gameStart(){
+  document.getElementById("infoWrapper").style.display = "none";
+  document.getElementById("attemptQuizButton").style.display = "none";
+  document.getElementById("gameButton").style.display = "none";
+  document.getElementById("topics").style.display = "none";
+  document.getElementById("game").style.display="block";
+  document.getElementById("game").innerHTML=`<strong class="quizClose gameclose" onclick="gameClose()"> &times; </strong><iframe src="./QUIZ/start.html" frameborder="0"></iframe>`;
+
+}
+
+function gameClose(){
+  document.getElementById("infoWrapper").style.display = "flex";
+  document.getElementById("game").style.display = "none";
+  document.getElementById("attemptQuizButton").style.display = "flex";
+  document.getElementById("gameButton").style.display = "flex";
   document.getElementById("topics").style.display = "flex";
   // document.getElementById("video-box").innerHTML="";
 }
