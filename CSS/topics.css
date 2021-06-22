@@ -100,8 +100,16 @@ header img{
   margin: 20px;
 }
 
-h2 {
+h2, h1, h3, h4, h5, h6 {
   color: #2c4353;
+}
+
+h1{
+  text-align: center;
+}
+
+.main p {
+  font-size: 22px;
 }
 
 iframe{
