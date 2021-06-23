@@ -1,18 +1,19 @@
-var ch=0;
-var f=0;
+var ch = 0;
+var f = 0;
 
-let mapQuiz =  JSON.parse(sessionStorage.getItem("mapQuiz"));
-let guessQuiz =  JSON.parse(sessionStorage.getItem("guessQuiz"));
-let huntQuiz =  JSON.parse(sessionStorage.getItem("huntQuiz"));
+let mapQuiz = JSON.parse(sessionStorage.getItem("mapQuiz"));
+let guessQuiz = JSON.parse(sessionStorage.getItem("guessQuiz"));
+let huntQuiz = JSON.parse(sessionStorage.getItem("huntQuiz"));
+let mapFinder = JSON.parse(sessionStorage.getItem("mapFinder"));
 let questions = [];
 
 
-if(sessionStorage.getItem("whichQuiz")==1){
+if (sessionStorage.getItem("whichQuiz") == 1) {
   questions = [];
-  for (let i=0; i<mapQuiz.length; i++) {
+  for (let i = 0; i < mapQuiz.length; i++) {
     questions.push({
-      id: i+1,
-      question: `Q${i+1} ${mapQuiz[i].question}`,
+      id: i + 1,
+      question: `Q${i + 1} ${mapQuiz[i].question}`,
       answer: `${mapQuiz[i].correct_option}`,
       image: mapQuiz[i].map_img_url,
       options: [
@@ -24,13 +25,13 @@ if(sessionStorage.getItem("whichQuiz")==1){
       ]
     })
   }
-} else if(sessionStorage.getItem("whichQuiz")==2){
+} else if (sessionStorage.getItem("whichQuiz") == 2) {
   questions = [];
 
-  for (let i=0; i<guessQuiz.length; i++) {
+  for (let i = 0; i < guessQuiz.length; i++) {
     questions.push({
-      id: i+1,
-      question: `Q${i+1} ${guessQuiz[i].question}`,
+      id: i + 1,
+      question: `Q${i + 1} ${guessQuiz[i].question}`,
       answer: `${guessQuiz[i].correct_option}`,
       image: guessQuiz[i].geo_img_url,
       explanation: guessQuiz[i].explanation,
@@ -44,13 +45,13 @@ if(sessionStorage.getItem("whichQuiz")==1){
     })
   }
 }
- else if(sessionStorage.getItem("whichQuiz")==3){
+else if (sessionStorage.getItem("whichQuiz") == 3) {
   questions = [];
 
-  for (let i=0; i<huntQuiz.length; i++) {
+  for (let i = 0; i < huntQuiz.length; i++) {
     questions.push({
-      id: i+1,
-      question: `Q${i+1} ${huntQuiz[i].question}`,
+      id: i + 1,
+      question: `Q${i + 1} ${huntQuiz[i].question}`,
       answer: `${huntQuiz[i].correct_option}`,
       image: huntQuiz[i].question_img_url,
       explanation: huntQuiz[i].explanation,
@@ -64,48 +65,73 @@ if(sessionStorage.getItem("whichQuiz")==1){
     })
   }
 }
+else if (sessionStorage.getItem("whichQuiz") == 4) {
+
+  questions = [];
+
+  for (let i = 0; i < mapFinder.length; i++) {
+    questions.push({
+      id: i + 1,
+      question: `Q${i + 1} ${mapFinder[i].question}`,
+      answer: `${mapFinder[i].answer}`,
+    })
+  }
+}
 
 
 let question_count = 0;
 let points = 0;
 
-window.onload = function() {
+window.onload = function () {
   show(question_count);
 
 };
 
 
-var chk= 0;
-var sums=0;
-var unchk=0;
+var chk = 0;
+var sums = 0;
+var unchk = 0;
 
 function showAnswer() {
-  let user_answer = document.querySelector("li.option.active").innerHTML;
-  // check if the answer is right or wrong
-  console.log(user_answer)
-  if (user_answer == questions[question_count].answer) {
-    points += 10;
-    sessionStorage.setItem("points", points);
-  }
-  console.log(points);
-  document.getElementById("quizlist").innerHTML= `<li class="option">${questions[question_count].answer}</li>`
-  if(sessionStorage.getItem("whichQuiz")==2 || sessionStorage.getItem("whichQuiz")==3){
-    document.getElementById("quizlist").innerHTML += `<p style="padding:20px;">Explanation: ${questions[question_count].explanation}</p>`
-  }
-  let option = document.querySelectorAll("li.option");
-  option[0].classList.add("active");
+  if (sessionStorage.getItem("whichQuiz") != 4) {
+    let user_answer = document.querySelector("li.option.active").innerHTML;
+    // check if the answer is right or wrong
+    console.log(user_answer)
+    if (user_answer == questions[question_count].answer) {
+      points += 10;
+      sessionStorage.setItem("points", points);
+    }
+    console.log(points);
+    document.getElementById("quizlist").innerHTML = `<li class="option">${questions[question_count].answer}</li>`
+    if (sessionStorage.getItem("whichQuiz") == 2 || sessionStorage.getItem("whichQuiz") == 3) {
+      document.getElementById("quizlist").innerHTML += `<p style="padding:20px;">Explanation: ${questions[question_count].explanation}</p>`
+    }
+    let option = document.querySelectorAll("li.option");
+    option[0].classList.add("active");
 
-  
-  sessionStorage.setItem("sums", sums);
-  
-  
+
+    sessionStorage.setItem("sums", sums);
+  }
+  else {
+    if (sessionStorage.getItem("state") == questions[question_count].answer) {
+      points += 10;
+      sessionStorage.setItem("points", points);
+      document.getElementById("quizHeading").innerHTML = `Correct`;
+    }
+    else{
+      document.getElementById("quizHeading").innerHTML = `Wrong`;
+    }
+  }
+
+
+
 }
 
 function next() {
   ch++;
-  f=0;
+  f = 0;
 
-   //document.write(sums);
+  //document.write(sums);
   // if the question is last then redirect to final page
   if (question_count == questions.length - 1) {
     clearInterval(countdown);
@@ -123,7 +149,7 @@ function next() {
   // }
   // console.log(points);
 
-  
+
 
   question_count++;
   show(question_count);
@@ -131,9 +157,10 @@ function next() {
 
 function show(count) {
   let question = document.getElementById("questions");
-  let [first, second, third, fourth, fifth] = questions[count].options;
+  if (sessionStorage.getItem("whichQuiz") != 4) {
+    let [first, second, third, fourth, fifth] = questions[count].options;
 
-  question.innerHTML = `
+    question.innerHTML = `
   <div>
   <h2>${questions[count].question}</h2>
    <ul id="quizlist" class="option_group">
@@ -149,46 +176,55 @@ function show(count) {
 <a class="btn-next" href="./start.html">Go Back</a>
 </div>
   `;
-  toggleActive();
+    toggleActive();
+  }
+  else if (sessionStorage.getItem("whichQuiz") == "4"){
+    question.innerHTML = `
+    <div id="quizHeading">
+    <h2>${questions[count].question}</h2>
+  </div>
+  <div class="imgWrapper">
+  <a class="btn-next" href="./start.html">Go Back</a>
+  </div>
+    `;
+  }
 }
 
 
-      
-      
+
+
 
 function toggleActive() {
   let option = document.querySelectorAll("li.option");
   option[4].classList.add("active");
   for (let i = 0; i < option.length; i++) {
-    option[i].onclick = function() {
+    option[i].onclick = function () {
 
 
-      if(f<1)
-      {
+      if (f < 1) {
 
-        f=3;
-      
-      
-    
-      for (let i = 0; i < option.length; i++) {
-        if (option[i].classList.contains("active")) {
-          
-          
-          option[i].classList.remove("active");
+        f = 3;
 
-          
-        } 
-       
-      } 
-      option[i].classList.add("active");
-  
 
-    }
-      
+
+        for (let i = 0; i < option.length; i++) {
+          if (option[i].classList.contains("active")) {
+
+
+            option[i].classList.remove("active");
+
+
+          }
+
+        }
+        option[i].classList.add("active");
+
+
+      }
+
     };
   }
 }
 
 
-  
-    
+

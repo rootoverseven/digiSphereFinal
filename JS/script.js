@@ -232,6 +232,8 @@ async function getAllMaps(i){
 
 function countryApiCall(e){
   // document.getElementById("info-box").innerHTML = `Getting Data`;
+  document.getElementById("quiz").style.width= '80vw';
+  document.getElementById("quiz").style.left= '10';
   document.getElementById("disc-box").innerHTML = `Getting Data`;
   document.getElementById("video-box").innerHTML= `Getting Data`;
   document.getElementById("stateText").innerHTML = "Getting Data";
@@ -242,6 +244,11 @@ function countryApiCall(e){
   getAllMaps(parseInt(localStorage.getItem("c_pk")))
   runScript(parseInt(localStorage.getItem("c_pk")));
   console.log(localStorage.getItem("c_pk"))
+
+  if (sessionStorage.getItem("whichQuiz") == "4"){
+    document.getElementById("quiz").style.width= '40vw';
+  document.getElementById("quiz").style.left= '40';
+  }
 }
 
 let singleState= null;
