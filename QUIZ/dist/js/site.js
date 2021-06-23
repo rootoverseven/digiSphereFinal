@@ -113,14 +113,8 @@ function showAnswer() {
     sessionStorage.setItem("sums", sums);
   }
   else {
-    if (sessionStorage.getItem("state") == questions[question_count].answer) {
-      points += 10;
-      sessionStorage.setItem("points", points);
-      document.getElementById("quizHeading").innerHTML = `Correct`;
-    }
-    else{
-      document.getElementById("quizHeading").innerHTML = `Wrong`;
-    }
+      document.getElementById("quizHeading").innerHTML = `${sessionStorage.getItem("state")}`;
+    
   }
 
 
