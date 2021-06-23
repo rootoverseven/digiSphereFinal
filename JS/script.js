@@ -232,8 +232,7 @@ async function getAllMaps(i){
 
 function countryApiCall(e){
   // document.getElementById("info-box").innerHTML = `Getting Data`;
-  document.getElementById("quiz").style.width= '60vw';
-  document.getElementById("quiz").style.left= '20';
+  
   document.getElementById("disc-box").innerHTML = `Getting Data`;
   document.getElementById("video-box").innerHTML= `Getting Data`;
   document.getElementById("stateText").innerHTML = "Getting Data";
