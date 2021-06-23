@@ -90,7 +90,7 @@ function showAnswer() {
   console.log(points);
   document.getElementById("quizlist").innerHTML= `<li class="option">${questions[question_count].answer}</li>`
   if(sessionStorage.getItem("whichQuiz")==2 || sessionStorage.getItem("whichQuiz")==3){
-    document.getElementById("quizlist").innerHTML += `<p style="padding:20px;">Exxplanation: ${questions[question_count].explanation}</p>`
+    document.getElementById("quizlist").innerHTML += `<p style="padding:20px;">Explanation: ${questions[question_count].explanation}</p>`
   }
   let option = document.querySelectorAll("li.option");
   option[0].classList.add("active");
