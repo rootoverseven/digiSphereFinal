@@ -1,4 +1,6 @@
 localStorage.setItem("c_pk", 99900);
+sessionStorage.setItem("whichQuiz", 0)
+
 
 allStates=null;
 allMaps=null;
@@ -245,8 +247,8 @@ function countryApiCall(e){
   console.log(localStorage.getItem("c_pk"))
 
   if (sessionStorage.getItem("whichQuiz") == "4"){
-    document.getElementById("quiz").style.width= '30vw';
-  document.getElementById("quiz").style.left= '60';
+    document.getElementById("game").style.width= '30vw';
+  document.getElementById("game").style.left= '60vw';
   }
 }
 

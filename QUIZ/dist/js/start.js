@@ -30,7 +30,7 @@ getMapFinder(i);
 async function getMapQuiz(i){
   console.log("func linked");
     //await axios.post("http://127.0.0.1:8000/api/country_name_new/", 
-    await axios.get(`https://toyca-app.herokuapp.com/api/mapquizfk/79`)
+    await axios.get(`https://toyca-app.herokuapp.com/api/mapquizfk/${i}`)
     .then(function (response) {
       mapQuiz=response.data;
       document.getElementById("map").disabled = false;
@@ -41,7 +41,7 @@ async function getMapQuiz(i){
 async function getGuessQuiz(i){
   console.log("func linked");
     //await axios.post("http://127.0.0.1:8000/api/country_name_new/", 
-    await axios.get(`https://toyca-app.herokuapp.com/api/geoguessquizfk/79`)
+    await axios.get(`https://toyca-app.herokuapp.com/api/geoguessquizfk/${i}`)
     .then(function (response) {
       guessQuiz=response.data;
       document.getElementById("geo").disabled = false;
@@ -52,7 +52,7 @@ async function getGuessQuiz(i){
 async function getHuntQuiz(i){
   console.log("func linked");
     //await axios.post("http://127.0.0.1:8000/api/country_name_new/", 
-    await axios.get(`https://toyca-app.herokuapp.com/api/treasurequizfk/79`)
+    await axios.get(`https://toyca-app.herokuapp.com/api/treasurequizfk/${i}`)
     .then(function (response) {
       huntQuiz=response.data;
       console.log(huntQuiz);
@@ -64,7 +64,7 @@ async function getHuntQuiz(i){
 async function getMapFinder(i){
   console.log("func linked");
     //await axios.post("http://127.0.0.1:8000/api/country_name_new/", 
-    await axios.get(`https://toyca-app.herokuapp.com/api/mapfinderfk/79`)
+    await axios.get(`https://toyca-app.herokuapp.com/api/mapfinderfk/${i}`)
     .then(function (response) {
       mapFinder=response.data;
       console.log(mapFinder);
