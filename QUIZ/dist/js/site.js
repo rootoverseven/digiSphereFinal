@@ -74,6 +74,7 @@ else if (sessionStorage.getItem("whichQuiz") == 4) {
       id: i + 1,
       question: `Q${i + 1} ${mapFinder[i].question}`,
       answer: `${mapFinder[i].answer}`,
+      image:`${mapFinder[i].img_url}`,
     })
   }
 }
@@ -113,8 +114,17 @@ function showAnswer() {
     sessionStorage.setItem("sums", sums);
   }
   else {
-      document.getElementById("quizHeading").innerHTML = `You have choosen ${sessionStorage.getItem("state")}`;
-    
+      document.getElementById("quizHeading").innerHTML = `
+      <ul>
+        You have choosen ${sessionStorage.getItem("state")},
+        <br>        
+      </ul>
+      <button class='btn-next' id="btnNext" onclick='change()'>
+        Show Answer
+      </button>
+      <h4>Images Coming from ${questions[question_count].answer}</h4>`;
+      document.getElementById("quizHeading").innerHTML += `<br><img src=${questions[question_count].image} alt="">`;
+
   }
 
 
@@ -155,27 +165,33 @@ function show(count) {
     let [first, second, third, fourth, fifth] = questions[count].options;
 
     question.innerHTML = `
-  <div>
-  <h2>${questions[count].question}</h2>
-   <ul id="quizlist" class="option_group">
-  <li class="option">${first}</li>
-  <li class="option">${second}</li>
-  <li class="option">${third}</li>
-  <li class="option">${fourth}</li>
-  <li class="option">${fifth}</li>
-</ul> 
-</div>
-<div class="imgWrapper">
-<img src=${questions[count].image} alt="">
-<a class="btn-next" href="./start.html">Go Back</a>
-</div>
-  `;
+    <div id="quizHeading">
+    <h2>${questions[count].question}</h2>
+    <ul id="quizlist" class="option_group">
+      <li class="option">${first}</li>
+      <li class="option">${second}</li>
+      <li class="option">${third}</li>
+      <li class="option">${fourth}</li>
+      <li class="option">${fifth}</li>
+    </ul> 
+    </div>
+    <div class="imgWrapper">
+    <img src=${questions[count].image} alt="">
+    <a class="btn-next" href="./start.html">Go Back</a>
+    </div>
+    `;
+
+    if (sessionStorage.getItem("whichQuiz") != 1){
+      document.getElementById("quizHeading").innerHTML+= "<button class='btn-next' id='btnNext' onclick='change()'>Show Answer</button>"
+    }
+
     toggleActive();
   }
-  else if (sessionStorage.getItem("whichQuiz") == "4"){
+  else if (sessionStorage.getItem("whichQuiz") == 4){
     question.innerHTML = `
     <div id="quizHeading">
     <h2>${questions[count].question}</h2>
+    <button class='btn-next' id="btnNext" onclick='change()'>Show Answer</button>
   </div>
   <div class="imgWrapper">
   <a class="btn-next" href="./start.html">Go Back</a>

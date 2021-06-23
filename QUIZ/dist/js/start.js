@@ -2,6 +2,7 @@ document.getElementById("map").disabled = true;
 document.getElementById("geo").disabled = true;
 document.getElementById("hunt").disabled = true;
 document.getElementById("find").disabled = true;
+ sessionStorage.setItem("whichQuiz", 0);
 
 let mapQuiz = null;
 let guessQuiz = null;

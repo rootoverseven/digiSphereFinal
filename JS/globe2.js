@@ -3508,12 +3508,13 @@ function onWindowClick(event) {
             document.getElementById("topics").style.display = "block";
 
 
-            
-            
+
+
 
             // localStorage.setItem("c_pk", intersects[0].object.userData.pk);
             // localData.set( "c_pk", intersects[0].object.userData.pk )
             changeValue("c_pk", intersects[0].object.userData.pk);
+            localStorage.setItem("changeCountry", 1);
 
             document.getElementById("info-box").innerHTML = `
         <div id="info-title" class="boxTitle">
@@ -3532,9 +3533,9 @@ function onWindowClick(event) {
             document.querySelector("#country_name").innerHTML = `<b style="color:#C473FF">Country:</b>` + intersects[0].object.userData.country_name;
         }
     }
-    else if (intersects[0].object.state_name){
+    else if (intersects[0].object.state_name) {
         sessionStorage.setItem("state", intersects[0].object.state_name);
-        india.material.opacity = 0.5;
+
         // mesh_c.material.opacity=0;
     }
     const item = intersects[0];
@@ -3542,6 +3543,19 @@ function onWindowClick(event) {
     let camDistance = camera.position.copy(point).normalize.multiplyScalar(camDistance);
 
 };
+
+function showIndia() {
+    if (sessionStorage.getItem("whichQuiz") == "4") {
+        removeChildren();
+        india.material.opacity = 0.5;
+        addStateCoord(earth, 'Tamil Nadu', 11.1271, 78.6569);
+        addStateCoord(earth, 'Kerala', 10.8505, 76.2711);
+        addStateCoord(earth, 'Karnataaka', 15.3173, 75.7139);
+        addStateCoord(earth, 'Andhra Pradesh', 15.9129, 79.7400);
+    }
+}
+
+window.addEventListener("storage", showIndia);
 
 // Allows for the scene to move and be interacted with
 
@@ -3576,8 +3590,8 @@ function removeChildren() {
 
 
 
-let mesh_c= null;
-let mesh_s= null;// Create and add coordinates for the globe
+let mesh_c = null;
+let mesh_s = null;// Create and add coordinates for the globe
 function addCountryCoord(earth, country_name, country_latitude, country_longitude, continent, pk, color) {
     let pointOfInterest = new THREE.SphereGeometry(.1, 32, 32);
     let lat = country_latitude * (Math.PI / 180);
@@ -3655,16 +3669,23 @@ let countryInfo = document.getElementById("country");
 countryInfo.addEventListener("click", changeToCountry);
 
 // Changes the information so data points can be seen
+
+window.addEventListener("storage", removeStates);
+
+function removeStates() {
+    if (localStorage.getItem("removeStates")==1){
+        changeToCountry();
+        localStorage.setItem("removeStates", 0);
+    }
+}
+
 function changeToCountry() {
     // Show/hide needed and unneeded elements
     document.querySelector("#instruction-box").style.display = "none";
     document.getElementById("title-box").style.display = "none";
+    india.material.opacity = 0;
 
     removeChildren();
-    addStateCoord(earth, 'Tamil Nadu', 11.1271, 78.6569);
-    addStateCoord(earth, 'Kerala', 10.8505, 76.2711);
-    addStateCoord(earth, 'Karnataaka', 15.3173, 75.7139);
-    addStateCoord(earth, 'Andhra Pradesh', 15.9129, 79.7400);
     // Get the data from the JSON file
     for (let i = 0; i < data.length; i++) {
         if (data[i].continent == 'ASIA') {
@@ -3692,6 +3713,26 @@ function changeToCountry() {
         }
     }
 };
+
+
+function resetEarth(){
+    removeChildren();
+    india.material.opacity = 0;
+    rotationDecider=1
+    localStorage.setItem("c_pk", 99900);
+  document.getElementById("infoWrapper").style.display = "none";
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("attemptQuizButton").style.display = "none";
+  document.getElementById("gameButton").style.display = "none";
+  document.getElementById("topics").style.display = "none";
+  document.getElementById("game").style.display = "none";
+  sessionStorage.setItem("whichQuiz", 0);
+    camera.position.z=20
+//   removeStates();
+  pauseVideo();
+}
+
+document.getElementById("reset").addEventListener("click", resetEarth);
 
 // Call the animation function so scene is properly rendered
 animate();
