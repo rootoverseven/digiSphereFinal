@@ -113,7 +113,7 @@ function showAnswer() {
     sessionStorage.setItem("sums", sums);
   }
   else {
-      document.getElementById("quizHeading").innerHTML = `${sessionStorage.getItem("state")}`;
+      document.getElementById("quizHeading").innerHTML = `You have choosen ${sessionStorage.getItem("state")}`;
     
   }
 
