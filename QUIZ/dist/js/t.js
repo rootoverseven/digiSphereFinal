@@ -12,10 +12,10 @@ var countdown = setInterval(function(){
 	
         if(c%2==0)
         {
-            seconds2 = 4;
+            seconds2 = 10;
             next();
         }else{
-            seconds2=2;
+            seconds2=5;
             showAnswer();
             
         }

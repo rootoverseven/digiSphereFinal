@@ -5,6 +5,8 @@ let user_points = sessionStorage.getItem("points");
 //let ss = sessionStorage.getItem("sums");
 //document.getElementById("name").innerHTML = user_name;
 document.getElementById("points").innerHTML = user_points;
+
+sessionStorage.setItem("points",0);
 //document.getElementById("time_taken").innerHTML = user_time;
 // document.getElementById("email").innerHTML = user_email;
 //document.getElementById("sums").innerHTML = ss;

@@ -150,11 +150,14 @@ body {
 }
 .btn-next {
   border: none;
+  margin: 20px 0;
   padding: 15px 35px;
-  background-color: #1F3044;
-  color: #FB9039;
+  background-color: #8a1a1a;
+  text-decoration: none;
+  color: #ffffff;
   border-radius: 27px;
   transition: 0.4s all;
+  text-align: center;
 }
 
 .btn-next:hover {

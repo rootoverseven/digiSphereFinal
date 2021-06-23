@@ -306,11 +306,13 @@ border: 10px solid rgba(255, 255, 255, 0);
     left: calc(90vw + 20px);
     transition: all 0.2s ease;
     display: none;
+
+    cursor: pointer;
     }
 
     .attemptQuizButton:hover{
-        transform: scale(1.1);
-        background-color: rgba(190, 39, 39, 0.884);
+        transform: scale(1.4);
+        background-color: rgba(0, 71, 179, 0.884);
 
     }
 

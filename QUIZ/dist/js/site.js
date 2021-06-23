@@ -146,6 +146,7 @@ function show(count) {
 </div>
 <div class="imgWrapper">
 <img src=${questions[count].image} alt="">
+<a class="btn-next" href="./start.html">Go Back</a>
 </div>
   `;
   toggleActive();
